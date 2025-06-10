@@ -58,7 +58,7 @@ const teamMembers = [
     name: "Rizky Fauzi",
     role: "Frontend & Backend Developer",
     description: "I`m just a Regular Everyday Normal Dude.",
-    image: "/images/Rizky.jpg",
+    image: "/images/Rizky.JPG",
     color: "bg-red-500",
     linkedin: "https://www.linkedin.com/in/rizkyfauzi-r8055f",
     animation: {

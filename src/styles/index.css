@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  scroll-behavior: smooth;
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Feature section transitions */
+.feature-transition {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Team hover effects */
+.team-member:hover .member-image {
+  transform: scale(1.05);
+}
+
+/* Service card hover */
+.service-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* In your index.css */
+@keyframes rollIn {
+  0% {
+    transform: rotateX(90deg) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rollOut {
+  0% {
+    transform: rotateX(0deg) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(-90deg) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@import "~leaflet/dist/leaflet.css";
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-container {
+  z-index: 0 !important;
+}
+
+.header {
+  z-index: 1000;
+  position: relative;
+}
+
+/* In your CSS */
+.activity-image {
+  transition: opacity 0.3s ease;
+}

@@ -21,7 +21,8 @@ const teamMembers = [
       "I love learning new things, especially those that can help solve problems around us.",
     image: "/images/Rifqi.jpg",
     color: "bg-green-500",
-    linkedin: "https://www.linkedin.com/in/moh-rifqi-abdan-04b52a30a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    linkedin:
+      "https://www.linkedin.com/in/moh-rifqi-abdan-04b52a30a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     animation: {
       y: -10,
       transition: { type: "spring", bounce: 0.4 },
@@ -41,29 +42,29 @@ const teamMembers = [
     },
   },
   {
-    name: "Gilber Juan Doli Manulang		",
-    role: "Frontend & Backend Developer",
-    description:
-      "Gone. Reduce to Atom.",
+    name: "Gilber Juan Doli Manulang",
+    role: "Front End and Back End Developer",
+    description: "Gone. Reduce to Atom.",
     image: "/images/confused.png",
-    color: "bg-purple-500",
-    linkedin: "https://linkedin.com/in/sarahlee",
+    color: "bg-blue-500",
+    linkedin: "https://linkedin.com/",
     animation: {
-      rotate: 10,
-      scale: 1.05,
-      transition: { type: "spring", stiffness: 200 },
+      rotate: -5,
+      transition: { type: "spring", stiffness: 300 },
     },
   },
   {
     name: "Rizky Fauzi",
-    role: "Frontend & Backend Developer",
-    description: "I`m just a Regular Everyday Normal Dude.",
+    role: "Front End and Back End Developer",
+    description:
+      "Im Just A Regular Everyday Normal Dude",
     image: "/images/Rizky.jpg",
-    color: "bg-red-500",
-    linkedin: "https://www.linkedin.com/in/rizkyfauzi-r8055f",
+    color: "bg-green-500",
+    linkedin:
+      "https://www.linkedin.com/in/rizkyfauzi-r8055f/",
     animation: {
-      scale: 1.1,
-      transition: { type: "spring" },
+      y: 10,
+      transition: { type: "spring", bounce: 0.4 },
     },
   },
 ];

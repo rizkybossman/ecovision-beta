@@ -58,7 +58,7 @@ const teamMembers = [
     role: "Front End and Back End Developer",
     description:
       "Im Just A Regular Everyday Normal Dude",
-    image: "/images/Zulfi.jpeg",
+    image: "/images/Rizky.jpg",
     color: "bg-green-500",
     linkedin:
       "https://www.linkedin.com/in/rizkyfauzi-r8055f/",

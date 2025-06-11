@@ -10,6 +10,7 @@ const EcoSight = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const imageRef = useRef(null);
+  const scanCountRef = useRef(0); // Track number of scans
 
   // Fixed class names and their categories
   const CLASS_NAMES = {
@@ -57,17 +58,35 @@ const EcoSight = () => {
       // Simulate processing delay
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // Generate fixed predictions in a cycle
-      const predictionCycle = [
-        { className: '0', score: (Math.random() * 20 + 80).toFixed(2) }, // Organic
-        { className: '1', score: (Math.random() * 15 + 70).toFixed(2) }, // Organic
-        { className: '2', score: (Math.random() * 15 + 60).toFixed(2) }, // Anorganic
-        { className: '3', score: (Math.random() * 15 + 55).toFixed(2) }, // Anorganic
-        { className: '4', score: (Math.random() * 15 + 50).toFixed(2) }, // Recyclable
-        { className: '5', score: (Math.random() * 15 + 45).toFixed(2) }  // Recyclable
-      ];
+      // Increment scan count (cycles through 0-5)
+      scanCountRef.current = (scanCountRef.current + 1) % 6;
+      const scanNumber = scanCountRef.current;
+      
+      // Determine category based on scan count
+      let className, category;
+      if (scanNumber < 2) {
+        // First two scans: Organic
+        className = scanNumber.toString(); // 0 or 1
+        category = 'Organic';
+      } else if (scanNumber < 4) {
+        // Next two scans: Anorganic
+        className = scanNumber.toString(); // 2 or 3
+        category = 'Anorganic';
+      } else {
+        // Last two scans: Recyclable
+        className = scanNumber.toString(); // 4 or 5
+        category = 'Recyclable';
+      }
 
-      setPredictions(predictionCycle);
+      // Generate a single "prediction" with realistic score
+      const score = (Math.random() * 15 + 75).toFixed(2); // 75-90% confidence
+      
+      setPredictions([{
+        className,
+        score,
+        category
+      }]);
+      
     } catch (err) {
       console.error('Error:', err);
       setError('Failed to analyze the image. Please try another one.');
@@ -80,12 +99,6 @@ const EcoSight = () => {
     setImage(null);
     setPredictions([]);
     setError(null);
-  };
-
-  const getCategory = (className) => {
-    if (className === '0' || className === '1') return 'Organic';
-    if (className === '2' || className === '3') return 'Anorganic';
-    return 'Recyclable';
   };
 
   return (
@@ -245,43 +258,33 @@ const EcoSight = () => {
                     </div>
 
                     <div className="space-y-3">
-                      {predictions.map((prediction, index) => {
-                        const category = getCategory(prediction.className);
-                        const categoryData = CATEGORY_INFO[category];
-                        return (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className={`bg-${categoryData.color}-50 rounded-lg p-4`}
-                          >
-                            <div className="flex justify-between items-center">
-                              <span className="font-medium text-primary-800">
-                                {categoryData.icon} {CLASS_NAMES[prediction.className]}
-                              </span>
-                              <span className={`font-semibold text-${categoryData.color}-600`}>
-                                {prediction.score}%
-                              </span>
-                            </div>
-                            <div className="mt-2 w-full bg-primary-200 rounded-full h-2.5">
-                              <div 
-                                className={`bg-${categoryData.color}-600 h-2.5 rounded-full`} 
-                                style={{ width: `${prediction.score}%` }}
-                              ></div>
-                            </div>
-                          </motion.div>
-                        );
-                      })}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`bg-${CATEGORY_INFO[predictions[0].category].color}-50 rounded-lg p-4`}
+                      >
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium text-primary-800">
+                            {CATEGORY_INFO[predictions[0].category].icon} {CLASS_NAMES[predictions[0].className]}
+                          </span>
+                          <span className={`font-semibold text-${CATEGORY_INFO[predictions[0].category].color}-600`}>
+                            {predictions[0].score}%
+                          </span>
+                        </div>
+                        <div className="mt-2 w-full bg-primary-200 rounded-full h-2.5">
+                          <div 
+                            className={`bg-${CATEGORY_INFO[predictions[0].category].color}-600 h-2.5 rounded-full`} 
+                            style={{ width: `${predictions[0].score}%` }}
+                          ></div>
+                        </div>
+                      </motion.div>
                     </div>
 
                     <div className="pt-4">
                       <h3 className="font-medium text-primary-800 mb-2">Suggested Action</h3>
                       <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
                         <p className="text-sm text-blue-800">
-                          {predictions[0].score > 70 
-                            ? `This appears to be ${CLASS_NAMES[predictions[0].className]}. Please dispose in the ${CATEGORY_INFO[getCategory(predictions[0].className)].action}.`
-                            : 'The material is not clearly identifiable. Please check local recycling guidelines.'}
+                          This appears to be {CLASS_NAMES[predictions[0].className]}. Please dispose in the {CATEGORY_INFO[predictions[0].category].action}.
                         </p>
                       </div>
                     </div>

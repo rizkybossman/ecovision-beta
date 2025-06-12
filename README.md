@@ -115,8 +115,6 @@ ecovision/
 ├── README.md
 
 
----
-
 ```
 ### Model AI
 

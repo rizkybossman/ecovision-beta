@@ -127,10 +127,9 @@ ecovision/
 ### Kontributor
 
 * Dicksa Ananda Cristian Tue (ML)
-* Abdan Syakura (ML)
-* Zulfi Ramadhan (ML)
-* Rizky Maulana (Frontend)
-* Gilber Kristanto (Frontend)
+* Moh Rifqi Abdan (ML)
+* Nur Fadilah Zulfi (ML)
+* Rizky Fauzi (Frontend dan Backend)
 
 ### Lisensi
 

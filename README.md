@@ -106,11 +106,9 @@ https://drive.google.com/drive/folders/1n8Sq15x7Fn1JmyEn0cYueJbTQRXB1VZW?usp=sha
 ecovision/
 ├── public/
 ├── src/
-│   ├── assets/
 │   ├── components/
 │   ├── pages/
-│   ├── ml-model/
-│   ├── utils/
+│   ├── styles/
 │   └── App.jsx
 ├── tailwind.config.js
 ├── index.html

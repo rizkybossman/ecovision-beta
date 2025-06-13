@@ -15,6 +15,9 @@ Ini adalah paragraf pengantar biasa yang menjelaskan secara singkat tujuan utama
 🎥 [Lihat video demo aplikasi](https://drive.google.com/file/d/16KzX2OQvjWIRdBiMfM_YKed5Qa02brU8/view?usp=sharing) <br/>
 🎥 [Lihat video presentasi](https://www.youtube.com/watch?v=your-video-id)
 
+### Drive Lengkap Seluruh File Capstone
+https://drive.google.com/drive/folders/1n8Sq15x7Fn1JmyEn0cYueJbTQRXB1VZW?usp=sharing
+
 ### Fitur Utama
 
 * 📸 **Klasifikasi gambar sampah** (organik, anorganik, daur ulang)
